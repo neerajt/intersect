@@ -1,7 +1,10 @@
 # This script compares two lists
+# $bash intersect.sh [-1=<colnum>]
+#   [-2=<colnum>] [-v] list1 list2
 # if you want to compare only one
 # column from a file, use the
-# -file1col and/or -file2col arguments
+# -1/-file1col and/or the
+# -2/-file2col arguments
 
 VERBOSE="NO"
 t="wc -l"
@@ -11,18 +14,17 @@ do
 	case $i in
 		-1=*|--file1col=*)
 			FILE1COL="${i#*=}"
-			shift # past argument=value
+			shift 
 			;;
 		-2=*|--file2col=*)
 			FILE2COL="${i#*=}"
-			shift # past argument=value
+			shift 
 			;;
 		-v|--verbose)
 			VERBOSE=YES
-			shift # past argument with no value
+			shift 
 			;;
 		*)
-			# unknown option
 			;;
 	esac
 done
